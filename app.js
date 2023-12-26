@@ -10,7 +10,7 @@ app.use(express.json());
 
 // now to use products route we do so 
 
-// app.use("/api/products", prodsRoute);
+app.use("/api/products", prodsRoute);
 
 
 
@@ -22,27 +22,27 @@ app.use(express.json());
 
 const PORT = 3001
 
-app.get("/products" , ( req, res ) => {
-    res.send( " List of all products  " )
-})
+// app.get("/products" , ( req, res ) => {
+//     res.send( " List of all products  " )
+// })
 
-app.post( "/products" , ( req ,res ) => {
+// app.post( "/products" , ( req ,res ) => {
 
-    res.send(" add new products ")
+//     res.send(" add new products ")
 
-} )
+// } )
 
-app.patch( "/products", ( req , res) => {
+// app.patch( "/products", ( req , res) => {
 
-    res.send(" updating products ")
+//     res.send(" updating products ")
 
-} )
+// } )
 
-app.delete( "/products", ( req, res ) => {
+// app.delete( "/products", ( req, res ) => {
 
-    res.send( "  prodcuts deleted " )
+//     res.send( "  prodcuts deleted " )
 
-} )
+// } )
 
 
 

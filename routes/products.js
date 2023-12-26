@@ -1,25 +1,25 @@
-const prodsRoute = require("express").Router
+const prodsRoute = require("express").Router();
 
 
 
-prodsRoute.get("/products" , ( req, res ) => {
+prodsRoute.get("/" , ( req, res ) => {
 res.send( " List of all products  " )
 })
 
-prodsRoute.post( "/products" , ( req ,res ) => {
+prodsRoute.post( "/" , ( req ,res ) => {
 
     res.send(" add new products ")
 
 } )
 
 
-prodsRoute.patch( "/products", ( req , res) => {
+prodsRoute.patch( "/", ( req , res) => {
  
     res.send(" updating products ");
 
 } )
 
-prodsRoute.delete( "/products", ( req, res ) => {
+prodsRoute.delete( "/", ( req, res ) => {
  
     res.send( "  prodcuts deleted " )
 
