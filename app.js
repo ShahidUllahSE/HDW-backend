@@ -22,6 +22,15 @@ app.use("/api/cart" , cartRoute)
 
 
 
+app.get('/' , ( req , res ) => {
+
+    // res.send( req.body.message )   // getting text from body using postman tool
+
+    
+
+ 
+})
+
 
 
 
