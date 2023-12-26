@@ -2,6 +2,8 @@ const express = require('express')
 
 const prodsRoute = require("./routes/products")
 
+const userRoute = require ('./routes/users')
+
 const app = express()
 
 app.use(express.json());
@@ -12,6 +14,7 @@ app.use(express.json());
 
 app.use("/api/products", prodsRoute);
 
+app.use("/api/users", userRoute)
 
 
 
