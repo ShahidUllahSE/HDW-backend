@@ -73,6 +73,7 @@ app.delete("/users" , ( req , res ) => {
 
 
     const sql = `DELETE FROM users WHERE uid=${ req.body.uid }`
+    // deleting record based on specific userid
     connection.query(sql, ( err, results, fields ) => {
         if(err) return
         res.send(results)
