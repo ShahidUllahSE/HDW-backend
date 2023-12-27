@@ -27,20 +27,31 @@ app.get("/users" , ( req, res ) => {
 
     // const sql = "SELECT * FROM users"
     // const sql = "SELECT * FROM products LIMIT 2"
-    
-    // fields mean if we want to return some value from some specific field but in this case we are returning all so not using fields
-    connection.query(sql, ( err, results, fields ) => {
-        if(err) return; // gaurd close means if error get returned from here , we wil not go down
-        res.send(results)
+    // const sql = `SELECT * FROM products LIMIT ${req.query.limit}`
+    // const sql = `SELECT * FROM products ORDER BY pid DESC`
+    // const sql = `SELECT * FROM products ORDER BY pid ${req.query.sort}`
 
-         
-    })
+    // want to get a specific product
+
+    // const sql = `SELECT * FROM products WHERE pid=${req.query.pid}`
 
 
 })
 
 app.post("/users", ( req , res ) => {
 
+    const sql = `INSERT INTO users (uid, name, email, password) VALUES (NULL, '${req.body.name}', '${req.body.email}', '${req.body.password}');`
+
+    res.send(sql)
+    
+        
+        // fields mean if we want to return some value from some specific field but in this case we are returning all so not using fields
+        connection.query(sql, ( err, results, fields ) => {
+            if(err) return; // gaurd close means if error get returned from here , we wil not go down
+            res.send(results.insertId+"")// id need to be in sting therefore i added +"" // as once we register on gmail and then it directly logged in us in account so it means that its retutrning id so on basis of  that we are logging in to that.
+    
+             
+        })
 })
 
 app.patch("/users" , ( req , res ) => {
@@ -49,6 +60,13 @@ app.patch("/users" , ( req , res ) => {
 })
 
 app.delete("/users" , ( req , res ) => {
+
+
+    const sql = `DELETE FROM users WHERE uid=${ req.body.uid }`
+    connection.query(sql, ( err, results, fields ) => {
+        if(err) return
+        res.send(results)
+    })
 
 })
 
