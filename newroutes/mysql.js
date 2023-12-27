@@ -26,9 +26,18 @@ app.use(express.json());
 app.get("/users" , ( req, res ) => {
 
     // const sql = "SELECT * FROM users"
+// getting all data from user table
+
     // const sql = "SELECT * FROM products LIMIT 2"
+    // getting data of 2 records only
+ 
+
     // const sql = `SELECT * FROM products LIMIT ${req.query.limit}`
+    // getting limit but from user in parameters
+
     // const sql = `SELECT * FROM products ORDER BY pid DESC`
+    // using sort here
+
     // const sql = `SELECT * FROM products ORDER BY pid ${req.query.sort}`
 
     // want to get a specific product
