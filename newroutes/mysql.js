@@ -39,6 +39,7 @@ app.get("/users" , ( req, res ) => {
     // using sort here
 
     // const sql = `SELECT * FROM products ORDER BY pid ${req.query.sort}`
+    // using sort by on wish of user wheather he want asc or desc or left empty so by default asc
 
     // want to get a specific product
 
