@@ -33,7 +33,7 @@ app.get("/users" , ( req, res ) => {
 
     // want to get a specific product
 
-    // const sql = `SELECT * FROM products WHERE pid=${req.query.pid}`
+    const sql = `SELECT * FROM products WHERE pid=${req.query.pid}`
 
 
 })
