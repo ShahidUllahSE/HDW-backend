@@ -12,8 +12,9 @@ const Joi = require("joi")
         adress: Joi.string().min(5).max(10)
     })
 
-    schema.validate(data)
-
+    const valid = schema.validate(data)
+    return valid;
+   
 
 }
 
@@ -21,9 +22,15 @@ const Joi = require("joi")
 function loginValidation ( data )  {
 
 
-    email: Joi.string().email().required(),
+    const schema = Joi.object({
+        name:Joi.string().required().min(3).max(8),
+        
+        password: Joi.string().required(),
 
-    password: Joi.string().required()
+    })
+
+ const valid = schema.validate(data)
+ return valid;
 
 
 

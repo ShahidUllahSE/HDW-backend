@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const { regValidation , loginValidation }  = require("./validation")
 router.get("/register" , ( req , res )=>{
 
 
@@ -10,10 +10,9 @@ router.post("/register" , ( req , res )=>{
 
     const { name , email , password , adress } = req.body
 
-    console.log(name);
-    console.log(email);
-    console.log(password);
-    console.log(adress);
+    const { error } = regValidation( req.body )
+
+    if(error) return res.send(error.details[0].message) // gaurd clause
 
 })
 
