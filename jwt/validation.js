@@ -1,6 +1,6 @@
 const Joi = require("joi")
 
-module.exports = function validation( data ) {
+ function regValidation( data ) {
 
     const schema = Joi.object({
         name:Joi.string().required().min(3).max(8),
@@ -13,6 +13,21 @@ module.exports = function validation( data ) {
     })
 
     schema.validate(data)
-    
+
 
 }
+
+
+function loginValidation ( data )  {
+
+
+    email: Joi.string().email().required(),
+
+    password: Joi.string().required()
+
+
+
+}
+
+module.exports.loginValidation = loginValidation
+module.exports.regValidation = regValidation
