@@ -12,11 +12,6 @@ userRoute.get("/" , ( req, res )=> {
 })
 
 
-
-
-
-
-
 userRoute.post("/", async( req, res) => {
 
     // res.send(" user added ")
