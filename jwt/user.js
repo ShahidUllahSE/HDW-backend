@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const { regValidation , loginValidation }  = require("./validation")
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
 const User= require("./models/User")
+// require(".env/config")
 router.get("/register" , ( req , res )=>{
 
 
@@ -65,7 +67,27 @@ router.get("/login" , ( req , res ) => {
 })
 
 
-router.post("/login" , ( req , res ) => {
+router.post("/login" , async ( req , res ) => {
+
+    const { email, password } = req.body;
+   const user= await User.findOne({email:email})
+    
+   if(!user) return res.status(400).send("email not found!")
+
+   const compare= await bcrypt.compare(password, user.password)
+
+   if(!compare) return res.status(400).send("Invalid password!")
+
+   const token = jwt.sign( {
+    // email: user.email}, process.env.TOKEN_SECRET )
+    email: user.email}, "shahidd" )
+
+        res.header("auth-token", token ).send(token) // sending in header and another send for sending in body as well
+
+    // res.send(token)
+
+//    res.send("logged in successfully")
+
     
 })
 
