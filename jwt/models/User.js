@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
     date: {
 
         type: Date,
-        default: Data.now()
+        default: Date.now()
 
     },
 
@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
 })
 
 
-module.exports = mangoose.model("User", userSchema)
+module.exports = mongoose.model("User", userSchema)
 // made model based on Schema and exported simply this means 
 
 
