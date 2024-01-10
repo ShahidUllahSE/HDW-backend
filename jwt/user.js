@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { regValidation , loginValidation }  = require("./validation")
+const bcrypt = require("bcrypt");
 const User= require("./models/User")
 router.get("/register" , ( req , res )=>{
 
@@ -15,10 +16,14 @@ router.post("/register" , async( req , res )=>{
 
     if(error) return res.send(error.details[0].message) // gaurd clause
 
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash( password, salt )
+
+
     const user= new User({
         name: req.body.name,
         email:req.body.email,
-        password: req.body.password
+        password: hash
     })
 
 try {
