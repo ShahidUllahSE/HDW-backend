@@ -3,8 +3,12 @@ const { regValidation , loginValidation }  = require("./validation")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 const User= require("./models/User")
+const verifyToken = require("../routes/verifyToken")
+
 // require(".env/config")
-router.get("/register" , ( req , res )=>{
+router.get("/register" , verifyToken, ( req , res )=>{
+
+    res.send("we are in regsiter route method:GET")
 
 
 
@@ -12,7 +16,7 @@ router.get("/register" , ( req , res )=>{
 
 router.post("/register" , async( req , res )=>{
 
-    const { name , email , password  } = req.body
+    const { name , email , password, address  } = req.body
 
     const { error } = regValidation( req.body )
 
@@ -30,7 +34,8 @@ router.post("/register" , async( req , res )=>{
     const user= new User({
         name: req.body.name,
         email:req.body.email,
-        password: hash
+        password: hash,
+        address: address
     })
 
 try {
