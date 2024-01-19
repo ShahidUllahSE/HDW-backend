@@ -3,9 +3,18 @@ const Books = require("./models/Books");
 
 // require(".env/config")
 
-booksRoute.get("/books", (req, res) => {
-  res.send("we are in books route method: GET");
-});
+booksRoute.get("/", async(req, res) => {
+
+   
+        try {
+            const allBooks = await Books.find({});
+            res.json(allBooks);
+        } catch (error) {
+          console.error("Error fetching Books:", error);
+          res.status(500).send("Internal Server Error");
+        }
+      });
+
 
 booksRoute.post("/", async (req, res) => {
   const { title, author, price, description, image, edition, year } = req.body;
