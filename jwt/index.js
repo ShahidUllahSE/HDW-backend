@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 
 const userRoute = require('./user')
 const prodsRoute = require('./products')
+const booksRoute = require('./books')
+
 
 var cors = require('cors')
 
@@ -18,6 +20,10 @@ app.use(express.json())
 
 app.use('/api/user/', userRoute)
 app.use('/api/products/', prodsRoute)
+app.use('/api/books/', booksRoute)
+
+
+
 
 app.get('/', (req, res) => {
 })
